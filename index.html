@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Waiting...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #f5f5f5;
+        }
+
+        .image {
+            width: 200px;
+            height: 200px;
+            background-image: url("https://thubongthiennga.com/uploads/shops/08-2019/5702017e0339a9251fd3ac17963574d7.gif");
+            background-size: cover;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 280px;
+            max-width: 90%;
+            height: 60vh;
+            background-color: white;
+        }
+    </style>
+    <script>
+        function redirect() {
+            window.location.href = "/home";
+        }
+
+        function countdown() {
+            var count = 5;
+            var countdownElement = document.getElementById("countdown");
+
+            var timer = setInterval(function() {
+                countdownElement.innerHTML = count;
+                count--;
+
+                if (count < 0) {
+                    clearInterval(timer);
+                    document.getElementById("loadingContainer").style.display = "none";
+                    document.getElementById("imageContainer").style.display = "block";
+                    redirect();
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body onload="countdown()">
+    <div id="loadingContainer" class="loading-container">
+        <div id="imageContainer" class="image"></div>
+        <p>Chuyển hướng sau <span id="countdown">5</span> giây...</p>
+    </div>
+</body>
+</html>
